@@ -1,49 +1,50 @@
 #include "includes/MutantStack.hpp"
 #include <iostream>
 
-#include "includes/MutantStack.hpp"
-
 int main()
 {
-	MutantStack<int> mstack;
-	mstack.push(5);
-	mstack.push(17);
-	std::cout << mstack.top() << std::endl;
-	mstack.pop();
-	std::cout << mstack.size() << std::endl;
-	mstack.push(3);
-	mstack.push(5);
-	mstack.push(737);
-	//[...]
-	mstack.push(0);
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
-	++it;
-	--it;
-	while (it != ite)
-	{
-		std::cout << *it << std::endl;
-		++it;
-	}
-	std::stack<int> s(mstack);
-	return 0;
+    std::cout << "===== Création et push de 5 et 17 =====" << std::endl;
+    MutantStack<int> mstack;
+    mstack.push(5);
+    mstack.push(17);
+    std::cout << "Top (devrait être 17): " << mstack.top() << std::endl;
+
+    std::cout << "\n===== Pop du dernier élément =====" << std::endl;
+    mstack.pop();
+    std::cout << "Taille après pop (devrait être 1): " << mstack.size() << std::endl;
+
+    std::cout << "\n===== Push de 3, 5 et 737 =====" << std::endl;
+    mstack.push(3);
+    mstack.push(5);
+    mstack.push(737);
+
+    std::cout << "\n===== Push de 0 =====" << std::endl;
+    mstack.push(0);
+
+    std::cout << "\n===== Itération à travers la MutantStack =====" << std::endl;
+    MutantStack<int>::iterator it = mstack.begin();
+    MutantStack<int>::iterator ite = mstack.end();
+    ++it;
+    --it;
+    while (it != ite)
+    {
+        std::cout << *it << std::endl;
+        ++it;
+    }
+
+    std::cout << "\n===== Test de copie dans un std::stack =====" << std::endl;
+    std::stack<int> s(mstack);
+    std::cout << "Top de la stack copiée (devrait être 0): " << s.top() << std::endl;
+
+    std::cout << "\n===== Test avec une stack vide =====" << std::endl;
+    MutantStack<int> emptyStack;
+    std::cout << "Taille de la stack vide: " << emptyStack.size() << std::endl;
+
+    std::cout << "\n===== Test sur une stack vide =====" << std::endl;
+    for (MutantStack<int>::iterator eit = emptyStack.begin(); eit != emptyStack.end(); ++eit)
+    {
+        std::cout << *eit << std::endl; //rien ici
+    }
+
+    return 0;
 }
-
-
-// int main() {
-// 	Span span(1);
-// 	for (int i = 0; i < 1; i++) {
-// 		span.addNumber(i);
-// 	}
-// 	try {
-// 		std::cout << "shortestSpan : " << span.shortestSpan() << std::endl;
-// 	} catch (std::runtime_error e) {
-// 		std::cout << e.what() << std::endl;
-// 	}
-// 	try {
-// 		std::cout << "longestSpan  : " << span.longestSpan() << std::endl;
-// 	} catch (std::runtime_error e) {
-// 		std::cout << e.what() << std::endl;
-// 	}
-// 	return 0;
-// }

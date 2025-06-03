@@ -1,7 +1,6 @@
 #include "includes/Span.hpp"
 #include <iostream>
 
-#include "includes/Span.hpp"
 
 int main() {
 	Span sp = Span(5);

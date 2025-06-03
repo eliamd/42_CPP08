@@ -11,7 +11,7 @@ int main() {
 	v.push_back(3);
 
 	try {
-        std::vector<int>::iterator it = easyfind(v, 42);
+        std::vector<int>::iterator it = easyfind(v, 155);
         std::cout << "Trouvé à l'index : " << std::distance(v.begin(), it) << std::endl;
 	} catch (const std::exception &e) {
 		std::cout << e.what() << std::endl;
